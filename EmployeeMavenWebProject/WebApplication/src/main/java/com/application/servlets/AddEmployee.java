@@ -40,22 +40,18 @@ public class AddEmployee extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EmployeeOperations employeeOperations = new EmployeeJdbcOperations(); 
-		response.setContentType("text/html");
-		
+		EmployeeOperations employeeOperations = new EmployeeJdbcOperations(); 	
 		String empId = request.getParameter("empId");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String salary = request.getParameter("salary");
-		String gender = request.getParameter("gender");
-		
+		String gender = request.getParameter("gender");	
 		Employee employee = new Employee();
 		employee.setId(Integer.parseInt(empId));
 		employee.setFirstName(firstName);
 		employee.setLastName(lastName);
 		employee.setSalary( Double.parseDouble(salary));
-		employee.setGender(Gender.valueOf(gender.toUpperCase()));
-		
+		employee.setGender(Gender.valueOf(gender.toUpperCase()));		
 		try {
 			employeeOperations.createEmployee(employee);
 			request.setAttribute("message", "Employee Successfully Added to the System !!");

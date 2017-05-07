@@ -40,7 +40,6 @@ public class ViewAll extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EmployeeOperations employeeOperations = new EmployeeJdbcOperations();
-		
 		try {
 			List<Employee> employees = employeeOperations.findAll();
 			request.setAttribute("employees", employees);
@@ -54,5 +53,4 @@ public class ViewAll extends HttpServlet {
 		}
 		request.getRequestDispatcher("displayAll.jsp").forward(request, response);
 	}
-
 }

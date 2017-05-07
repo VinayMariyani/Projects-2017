@@ -37,14 +37,11 @@ public class ViewEmployee extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		EmployeeOperations employeeOperations = new EmployeeJdbcOperations();
 		String action = request.getParameter("action");
-		if(action.equals("view")){
-			EmployeeOperations employeeOperations = new EmployeeJdbcOperations(); 
-			response.setContentType("text/html");
-
+		if(action.equals("view")){ 
 			String empId = request.getParameter("empId");
 			try {
-
 				Employee employee = employeeOperations.findEmployee(Integer.parseInt(empId));
 				if(employee == null){
 					request.setAttribute("message", "Employee Not Found");
@@ -59,10 +56,8 @@ public class ViewEmployee extends HttpServlet {
 			}
 			request.getRequestDispatcher("displayEmployee.jsp").forward(request, response);	
 		}
-		if(action.equals("update")) {
-			EmployeeOperations employeeOperations = new EmployeeJdbcOperations(); 		
+		if(action.equals("update")) {		
 			try {
-				
 				String id = request.getParameter("empId");
 				String firstName = request.getParameter("firstName");
 				String lastName = request.getParameter("lastName");
@@ -89,12 +84,9 @@ public class ViewEmployee extends HttpServlet {
 			}
 			request.getRequestDispatcher("displayEmployee.jsp").forward(request, response);	
 		}
-		if(action.equals("delete")) {
-			EmployeeOperations employeeOperations = new EmployeeJdbcOperations(); 		
-			try {
-				
+		if(action.equals("delete")) {		
+			try {	
 				String empId = request.getParameter("empId");
-				
 				boolean flag = employeeOperations.deleteEmployee(Integer.parseInt(empId));
 				if(flag == false){
 					request.setAttribute("message", "Employee Not Found");
