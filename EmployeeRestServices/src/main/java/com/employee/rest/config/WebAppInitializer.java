@@ -14,7 +14,7 @@ public class WebAppInitializer implements WebApplicationInitializer{
 			webApplicationContext.register(AppConfig.class);
 			webApplicationContext.setServletContext(servletContext);
 			webApplicationContext.refresh();
-			Dynamic dynamic = servletContext.addServlet("MySpringRESTWS", new DispatcherServlet(webApplicationContext));
+			Dynamic dynamic = servletContext.addServlet("EmployeeRestServices", new DispatcherServlet(webApplicationContext));
 			dynamic.addMapping("/");
 			dynamic.setLoadOnStartup(1);
 			dynamic.setMultipartConfig(webApplicationContext.getBean(MultipartConfigElement.class));

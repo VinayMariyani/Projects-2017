@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trng.spring.mvc.exceptions.EmployeeCreationException;
-import com.trng.spring.mvc.model.Employee;
-import com.trng.spring.mvc.service.IEmployeeService;
+import com.employee.rest.exceptions.EmployeeCreationException;
+import com.employee.rest.model.Employee;
+import com.employee.rest.service.IEmployeeService;
 
 @RestController
 @RequestMapping("/employees")
@@ -41,7 +41,8 @@ public class EmployeeRestController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Employee> viewAllEmployees(){
-			try {
+		System.out.println("View All Employees Called");	
+		try {
 				return employeeService.findAll();
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
