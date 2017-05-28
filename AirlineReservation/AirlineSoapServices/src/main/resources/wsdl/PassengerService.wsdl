@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/PassengerService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PassengerService" targetNamespace="http://www.example.org/PassengerService/" xmlns:xsd1="http://www.example.org/CreatePassengerProfile" xmlns:xsd2="http://www.example.org/DeletePassengerProfile" xmlns:xsd3="http://www.example.org/GetPassengerProfile" xmlns:xsd4="http://www.example.org/UpdatePassengerProfile">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    	<xsd:import
+    		namespace="http://www.example.org/CreatePassengerProfile"
+    		schemaLocation="../xsd/CreatePassengerProfile.xsd">
+    	</xsd:import>
+    	<xsd:import
+    		namespace="http://www.example.org/DeletePassengerProfile"
+    		schemaLocation="../xsd/DeletePassengerProfile.xsd">
+    	</xsd:import>
+    	<xsd:import
+    		namespace="http://www.example.org/GetPassengerProfile"
+    		schemaLocation="../xsd/GetPassengerProfile.xsd">
+    	</xsd:import>
+    	<xsd:import
+    		namespace="http://www.example.org/UpdatePassengerProfile"
+    		schemaLocation="../xsd/UpdatePassengerProfile.xsd">
+    	</xsd:import></xsd:schema></wsdl:types>
+  <wsdl:message name="createPassengerProfileRequest">
+    <wsdl:part element="xsd1:CreatePassengerProfileRequest" name="request"/>
+  </wsdl:message>
+  <wsdl:message name="createPassengerProfileResponse">
+    <wsdl:part element="xsd1:CreatePassengerProfileResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="deletePassengerProfileRequest">
+  	<wsdl:part name="request" element="xsd2:DeletePassengerProfileRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deletePassengerProfileResponse">
+  	<wsdl:part name="response"
+  		element="xsd2:DeletePassengerProfileResponse">
+  	</wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassengerProfileRequest">
+  	<wsdl:part name="request" element="xsd3:GetPassengerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getPassengerProfileResponse">
+  	<wsdl:part name="response" element="xsd3:GetPassengerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePassengerProfileRequest">
+  	<wsdl:part name="request" element="xsd4:UpdatePassengerRequest"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePassengerProfileResponse">
+  	<wsdl:part name="response" element="xsd4:UpdatePassengerResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PassengerService">
+    <wsdl:operation name="createPassengerProfile">
+      <wsdl:input message="tns:createPassengerProfileRequest"/>
+      <wsdl:output message="tns:createPassengerProfileResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="deletePassengerProfile">
+    	<wsdl:input message="tns:deletePassengerProfileRequest"></wsdl:input>
+    	<wsdl:output message="tns:deletePassengerProfileResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPassengerProfile">
+    	<wsdl:input message="tns:getPassengerProfileRequest"></wsdl:input>
+    	<wsdl:output message="tns:getPassengerProfileResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePassengerProfile">
+    	<wsdl:input message="tns:updatePassengerProfileRequest"></wsdl:input>
+    	<wsdl:output message="tns:updatePassengerProfileResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PassengerServiceSOAP" type="tns:PassengerService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="PassengerProfile">
+      <soap:operation soapAction="http://www.example.org/PassengerService/PassengerProfile"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PassengerService">
+    <wsdl:port binding="tns:PassengerServiceSOAP" name="PassengerServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/UpdatePassengerProfile" xmlns:tns="http://www.example.org/UpdatePassengerProfile" elementFormDefault="qualified" xmlns:Q1="http://www.example.org/PassengerProfile">
+
+    <import schemaLocation="PassengerProfile.xsd" namespace="http://www.example.org/PassengerProfile"></import>
+    <complexType name="UpdatePassengerRequest">
+    	<sequence>
+    		<element name="Passenger" type="Q1:Passenger"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="UpdatePassengerResponse">
+    	<sequence>
+    		<element name="flag" type="boolean"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="UpdatePassengerRequest" type="tns:UpdatePassengerRequest"></element>
+
+    <element name="UpdatePassengerResponse" type="tns:UpdatePassengerResponse"></element>
+</schema>

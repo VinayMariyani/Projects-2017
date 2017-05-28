@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/DeletePassengerProfile" xmlns:tns="http://www.example.org/DeletePassengerProfile" elementFormDefault="qualified" xmlns:Q1="http://www.example.org/PassengerProfile">
+
+    <import schemaLocation="PassengerProfile.xsd" namespace="http://www.example.org/PassengerProfile"></import>
+    <complexType name="DeletePassengerProfileRequest">
+    	<sequence>
+    		<element name="profileID" type="int"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="DeletePassengerProfileResponse">
+    	<sequence>
+    		<element name="flag" type="boolean"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="DeletePassengerProfileRequest" type="tns:DeletePassengerProfileRequest"></element>
+
+    <element name="DeletePassengerProfileResponse" type="tns:DeletePassengerProfileResponse"></element>
+</schema>

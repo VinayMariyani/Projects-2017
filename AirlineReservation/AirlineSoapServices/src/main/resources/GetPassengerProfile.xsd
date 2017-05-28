@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/GetPassengerProfile" xmlns:tns="http://www.example.org/GetPassengerProfile" elementFormDefault="qualified" xmlns:Q1="http://www.example.org/PassengerProfile">
+
+
+    <import schemaLocation="PassengerProfile.xsd" namespace="http://www.example.org/PassengerProfile"></import>
+    <complexType name="GetPassengerRequest">
+    	<sequence>
+    		<element name="Passenger" type="Q1:Passenger"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="GetPassengerResponse"></complexType>
+
+    <element name="GetPassengerRequest" type="tns:GetPassengerRequest"></element>
+
+    <element name="GetPassengerResponse" type="tns:GetPassengerResponse"></element>
+</schema>
